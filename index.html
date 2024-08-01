@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウイルス感染通知</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://ul.h3z.jp/74VVcqe9.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: rgba(255, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        h1, p {
+            margin: 0 0 10px;
+            color: #ffffff;
+        }
+        .important {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function startCountdown(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    alert("時間切れです！");
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const oneMinute = 60; // 1分を秒数で指定
+            const display = document.querySelector('#countdown');
+            startCountdown(oneMinute, display);
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>ウイルス感染通知</h1>
+        <p>あなたのiPhoneはウイルスに感染し、今現在ハッカーに追跡されています。</p>
+        <p>直ちにITサポートに連絡し、指示に従ってください。</p>
+        <p class="important">注意: この通知は正当なものであり、偽の警告ではありません。</p>
+        <p class="important">カウントダウンが終わるまでに対処しないと、貴方のSDカード、SIMが破壊され、今までに撮った写真等が、紛失します。090-2423-3514</p>
+        <p id="countdown">01:00</p>
+    </div>
+</body>
+</html>
